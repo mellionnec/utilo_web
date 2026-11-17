@@ -1,19 +1,36 @@
-# Utilo · Fiches de facilitation
+# Utilo Web
 
-Site statique reprenant les 55 fiches de facilitation du guide **Utilo** du réseau du [Ti Lab](https://tilab.bzh/?Utilo) (2021) : brise-glace, exercices de cohésion, ateliers d'idéation, outils de décision, etc.
+Miroir statique des **fiches de facilitation Utilo** (Ti Lab, [tilab.bzh](https://tilab.bzh/?Utilo)) : 55 fiches consultables avec filtres par thème, action, niveau et nombre de participants, page de détail par fiche et assistant de recommandation local.
 
-## Fonctionnalités
+## Structure
 
-- Page d'accueil avec filtres : **thème** (14), **action**, **niveau** (1 à 3) et **nombre de participants**, plus une recherche plein texte
-- Une page de détail par fiche : description, matériel, déroulé, conseils, variantes, source, lien vers le PDF original
-- 100 % statique (HTML + CSS + JS vanilla), sans dépendance ni tracking
+```
+index.html      Page d'accueil (filtres + recherche + assistant)
+fiche.html      Page de détail d'une fiche (?id=<slug>)
+styles.css      Charte Ti Lab (anthracite #3d3e40, jaune #ffc433, turquoise #3ec7c5)
+app.js          Filtres, recherche, rendu des fiches
+assistant.js    Assistant de recommandation (local, sans API)
+fiches.js       Données générées (55 fiches) — ne pas modifier à la main
+themes.js       Données générées (thématiques et couleurs)
+build.py        Régénération depuis l'API YesWiki du Ti Lab
+```
 
-## Mettre à jour les fiches
+## Mise à jour des données
 
-1. Télécharger l'export YesWiki : `curl -s "https://tilab.bzh/?api/forms/8/entries" -o entries.json`
-2. Régénérer `fiches.js` / `themes.js` avec le script `build.py` (Python 3, sans dépendance)
-3. Commiter et pousser
+```bash
+python3 build.py
+```
+
+Récupère les fiches depuis `https://tilab.bzh/?api/forms/8/entries` et régénère `fiches.js` / `themes.js`.
+
+## Déploiement
+
+GitHub Pages, branche `main`, racine du dépôt : https://mellionnec.github.io/utilo_web/
+
+## Développement piloté par la spécification
+
+Ce dépôt utilise [Spec Kit](https://github.com/github/spec-kit) : voir `.specify/README.md` et `specs/001-site-utilo/` (commandes `/specify`, `/plan`, `/tasks`, `/implement`).
 
 ## Crédits
 
-Contenu original : réseau Utilo / Ti Lab (Région Bretagne), guide de facilitation 2021, licence libre d'après le site source. Ce dépôt est un site miroir statique ; les fiches originales restent sur https://tilab.bzh/?Utilo.
+Guide Utilo © Ti Lab (2021), https://tilab.bzh. Ce site est un miroir de consultation ; chaque fiche renvoie vers l'original.
