@@ -117,7 +117,7 @@
 
   /* ---------- drawer détail ---------- */
   const drawer = $("#drawer"), backdrop = $("#backdrop"), body = $("#drawerBody");
-  const list = (html) => html && html.trim() ? `<ul>${html.replace(/<\/?ul>/g, "").replace(/<li>/g, "<li>')}</ul>` : "";
+  const list = (html) => html && html.trim() ? "<ul>" + html.replace(/<\/?ul>/g, "") + "</ul>" : "";
   function openDrawer(f) {
     const t = THEMES[f.theme] || { label: f.theme, emoji: "" };
     body.style.setProperty("--dotc", accentOf(f.theme));
@@ -133,10 +133,11 @@
       ${f.description ? `<h4>En bref</h4><p>${f.description.replace(/\n/g, "<br>")}</p>` : ""}
       ${f.materiel ? `<h4>Matériel</h4>${list(f.materiel)}` : ""}
       ${f.deroule ? `<h4>Déroulé</h4>${list(f.deroule)}` : ""}
-      ${f.description3 ? `<h4>Conseils</h4>${list(f.description3)}` : ""}
-      ${f.description4 ? `<h4>Variante</h4>${list(f.description4)}` : ""}
-      ${f.description5 ? `<h4>Source</h4><p>${f.description5}</p>` : ""}
-      <a class="cta" href="https://tilab.bzh/?${f.id}" target="_blank" rel="noopener">Voir la fiche originale ↗</a>`;
+      ${f.conseils ? `<h4>Conseils</h4>${list(f.conseils)}` : ""}
+      ${f.variante ? `<h4>Variante</h4>${list(f.variante)}` : ""}
+      ${f.source ? `<h4>Source</h4><p>${f.source}</p>` : ""}
+      ${f.pdf ? `<a class="cta" href="${f.pdf}" target="_blank" rel="noopener" style="margin-left:10px">Télécharger le PDF ↗</a>` : ""}
+      <a class="cta" href="${f.original || "https://tilab.bzh/?" + f.id}" target="_blank" rel="noopener">Voir la fiche originale ↗</a>`;
     drawer.classList.add("open"); backdrop.classList.add("open");
     document.body.style.overflow = "hidden";
     drawer.scrollTop = 0; $("#drawerClose").focus();
