@@ -4,86 +4,84 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Utilo · Fiches de facilitation</title>
-<meta name="description" content="55 fiches de facilitation et d'intelligence collective du réseau Utilo (Ti Lab) : brise-glace, ateliers d'idéation, outils de décision et plus.">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛠️</text></svg>">
+<meta name="description" content="55 fiches de facilitation et d'intelligence collective du réseau Utilo (Ti Lab), avec filtres et recherche instantanée.">
+<meta name="theme-color" content="#f7f7f5">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%9B%81%EF%B8%8F%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=ABeeZee&family=Hind+Siliguri:wght@400;500;600;700&display=swap">
-<link rel="stylesheet" href="styles.css">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="design.css">
 </head>
 <body>
-<header class="site-header">
-  <div class="wrap header-inner">
-    <a class="brand" href="index.html">
-      <img src="https://tilab.bzh/files/Utilo_2023_10_24_Logo_Coul_20251217154511_20251217160540.png" alt="Logo Utilo" class="logo">
-      <span class="brand-name">Utilo <span>· fiches de facilitation</span></span>
-    </a>
-    <a class="header-link" href="https://tilab.bzh/?Utilo" target="_blank" rel="noopener">Le réseau Utilo ↗</a>
-  </div>
+
+<div class="aurora" aria-hidden="true"></div>
+<div class="progress" aria-hidden="true"><i></i></div>
+
+<header class="nav">
+  <a class="brand" href="./">
+    <img src="https://tilab.bzh/files/LogoUtilo.png" alt="" width="28" height="28" loading="lazy">
+    <span>Utilo</span>
+  </a>
+  <nav class="nav-links" aria-label="Navigation">
+    <a href="https://tilab.bzh/?Utilo" target="_blank" rel="noopener">Guide original ↗</a>
+    <button class="theme-toggle" id="themeToggle" aria-label="Basculer le mode sombre" title="Mode sombre / clair">
+      <svg class="ico-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      <svg class="ico-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+    </button>
+  </nav>
 </header>
 
-<section class="hero">
-  <div class="wrap">
-    <h1><span class="hl">Fiches de facilitation Utilo</span></h1>
-    <p class="lead">55 outils d'intelligence collective pour animer vos réunions, ateliers et projets participatifs. Reprise du guide de facilitation produit par le réseau <a href="https://tilab.bzh/?Utilo" target="_blank" rel="noopener">Utilo / Ti Lab</a>.</p>
-    <div class="stats">
-      <span><b>55</b>fiches</span>
-      <span><b>14</b>thèmes</span>
-      <span><b>3</b>niveaux</span>
+<main>
+  <section class="hero">
+    <p class="kicker reveal">Ti Lab · Intelligence collective</p>
+    <h1 class="reveal">Le bon atelier,<br>au bon <span class="hl">moment</span>.</h1>
+    <p class="lede reveal">55 fiches de facilitation pour animer vos groupes : brise-glace, idéation, décision, cohésion. Trouvez la vôtre en quelques secondes.</p>
+    <div class="search-wrap reveal">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+      <input id="search" type="search" placeholder="Rechercher une fiche, un thème, une action…" autocomplete="off" spellcheck="false">
+      <kbd id="searchKbd">/</kbd>
     </div>
-  </div>
-</section>
-
-<main class="wrap">
-  <section class="filters" id="filters">
-    <div class="filter-group">
-      <label for="f-theme">Thème</label>
-      <select id="f-theme"><option value="">Tous les thèmes</option></select>
-    </div>
-    <div class="filter-group">
-      <label for="f-action">Action</label>
-      <select id="f-action"><option value="">Toutes les actions</option></select>
-    </div>
-    <div class="filter-group">
-      <label for="f-niveau">Niveau</label>
-      <select id="f-niveau">
-        <option value="">Tous les niveaux</option>
-        <option value="1">Niveau 1 · Débutant</option>
-        <option value="2">Niveau 2 · Intermédiaire</option>
-        <option value="3">Niveau 3 · Confirmé</option>
-      </select>
-    </div>
-    <div class="filter-group">
-      <label for="f-participants">Participants</label>
-      <select id="f-participants">
-        <option value="">Peu importe</option>
-        <option value="1-8">1 à 8</option>
-        <option value="9-15">9 à 15</option>
-        <option value="16-30">16 à 30</option>
-        <option value="31-100">30 et +</option>
-      </select>
-    </div>
-    <div class="filter-group grow">
-      <label for="f-recherche">Recherche</label>
-      <input type="search" id="f-recherche" placeholder="Rechercher une fiche…" autocomplete="off">
-    </div>
-    <button id="f-reset" class="reset" type="button">Réinitialiser</button>
+    <div class="stats reveal" id="stats" aria-live="polite"></div>
   </section>
 
-  <p class="count" id="count"></p>
-  <section class="grid" id="grid"></section>
-  <p class="empty" id="empty" hidden>Aucune fiche ne correspond à ces critères. 😕</p>
+  <section class="toolbar" id="toolbar">
+    <div class="chips" id="themeChips" role="tablist" aria-label="Filtrer par thème"></div>
+    <div class="toolbar-row">
+      <div class="chips small" id="metaChips">
+        <button class="chip" data-niveau="">Tous niveaux</button>
+        <button class="chip" data-niveau="1">Débutant</button>
+        <button class="chip" data-niveau="2">Intermédiaire</button>
+        <button class="chip" data-niveau="3">Avancé</button>
+        <span class="sep"></span>
+        <button class="chip" data-part="any">Tout effectif</button>
+        <button class="chip" data-part="small">≤ 10 pers.</button>
+        <button class="chip" data-part="large">&gt; 20 pers.</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="grid" id="grid" aria-live="polite"></section>
+  <p class="empty" id="empty" hidden>Aucune fiche ne correspond. <button class="linkish" id="resetAll">Réinitialiser les filtres</button></p>
+
+  <footer class="footer">
+    <p>Miroir de consultation du guide <a href="https://tilab.bzh/?Utilo" target="_blank" rel="noopener">Utilo</a> © Ti Lab (2021), <a href="https://tilab.bzh" target="_blank" rel="noopener">tilab.bzh</a>. Chaque fiche renvoie vers l'original.</p>
+  </footer>
 </main>
 
-<footer class="footer">
-  <div class="wrap">
-    <p><img src="https://tilab.bzh/files/Utilo_2023_10_24_Logo_Coul_20251217154511_20251217160540.png" alt="" class="footer-logo"> Fiches issues du <a href="https://tilab.bzh/?Utilo" target="_blank" rel="noopener">guide de facilitation Utilo</a>, produit par le réseau du <a href="https://tilab.bzh" target="_blank" rel="noopener">Ti Lab</a> (2021). Site miroir statique, sans tracking, hébergé sur GitHub Pages.</p>
-  </div>
-</footer>
+<button class="top" id="toTop" aria-label="Remonter en haut de page">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
+</button>
+
+<div class="drawer-backdrop" id="backdrop" aria-hidden="true"></div>
+<aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-label="Détail de la fiche">
+  <button class="drawer-close" id="drawerClose" aria-label="Fermer">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+  </button>
+  <div id="drawerBody"></div>
+</aside>
 
 <script src="themes.js"></script>
 <script src="fiches.js"></script>
-<script src="app.js"></script>
-<script src="assistant.js"></script>
+<script src="design.js"></script>
 </body>
 </html>
