@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fiche · Utilo</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛠️</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=ABeeZee&family=Hind+Siliguri:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<main class="wrap detail" id="detail">
+  <a class="backlink" href="index.html">← Retour aux fiches</a>
+  <div id="content"><p>Chargement…</p></div>
+</main>
+<script src="themes.js"></script>
+<script src="fiches.js"></script>
+<script>
+(function () {
+  const id = new URLSearchParams(location.search).get('id');
+  const f = FICHES.find((x) => x.id === id) || FICHES.find((x) => x.id.toLowerCase() === (id || '').toLowerCase());
+  const content = document.getElementById('content');
+  if (!f) {
+    document.title = 'Fiche introuvable · Utilo';
+    content.innerHTML = '<div class="section"><p>Fiche introuvable. <a href="index.html">Retour aux fiches</a>.</p></div>';
+    return;
+  }
+  const theme = THEMES[f.theme] || { label: f.theme, emoji: '', desc: '' };
+  document.title = f.titre + ' · Utilo';
+
+  const acc = theme.accent || 'ink';
+  const section = (title, html) =>
+    html ? '<section class="section"><h2><span class="hl">' + title + '</span></h2>' + html + '</section>' : '';
+
+  let html = '';
+  html += '<div class="detail-header">' +
+    '<div class="badges">' +
+    '<span class="theme-tag"><span class="dot ' + acc + '"></span>' + theme.label + '</span>' +
+    (f.niveau ? '<span class="badge niveau-' + f.niveau + '">Niveau ' + f.niveau + ' · ' + f.niveauLabel + '</span>' : '') +
+    '</div>' +
+    '<h1><span class="hl">' + f.titre + '</span></h1>' +
+    '<p class="meta">' +
+    '<span class="meta-item">⏱ Durée : <b>' + (f.duree || '—') + '</b></span>' +
+    '<span class="meta-item">🧰 Préparation : <b>' + (f.preparation || '—') + '</b></span>' +
+    '<span class="meta-item">👥 Participants : <b>' + (f.participants || '—') + '</b></span>' +
+    '</p></div>';
+
+  if (theme.desc) html += '<p class="count" style="margin:10px 4px 0">' + theme.emoji + ' ' + theme.desc + '</p>';
+
+  html += section('En bref', f.description ? '<p>' + f.description.replace(/\n+/g, '</p><p>') + '</p>' : '');
+  html += section('Matériel', f.materiel);
+  html += section('Déroulé', f.deroule);
+  html += section('Conseils', f.conseils);
+  html += section('Variantes', f.variante);
+  html += section('Source', f.source ? '<p>' + f.source + '</p>' : '');
+
+  html += '<div class="actions-bar">' +
+    (f.pdf ? '<a class="btn" href="' + f.pdf + '" target="_blank" rel="noopener">📄 Fiche PDF</a>' : '') +
+    '<a class="btn secondary" href="' + f.original + '" target="_blank" rel="noopener">Voir sur tilab.bzh ↗</a>' +
+    '</div>';
+
+  const related = FICHES.filter((x) => x.theme === f.theme && x.id !== f.id).slice(0, 3);
+  if (related.length) {
+    html += '<div class="related"><h2>Dans le même thème</h2><div class="grid">';
+    related.forEach((r) => {
+      html += '<a class="card" href="fiche.html?id=' + encodeURIComponent(r.id) + '">' +
+        '<h2>' + r.titre + '</h2>' +
+        '<p class="meta"><span>⏱ ' + (r.duree || '—') + '</span><span>👥 ' + (r.participants || '—') + '</span></p></a>';
+    });
+    html += '</div></div>';
+  }
+  content.innerHTML = html;
+})();
+</script>
+<script src="assistant.js"></script>
+</body>
+</html>

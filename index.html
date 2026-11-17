@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Utilo · Fiches de facilitation</title>
+<meta name="description" content="55 fiches de facilitation et d'intelligence collective du réseau Utilo (Ti Lab) : brise-glace, ateliers d'idéation, outils de décision et plus.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛠️</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=ABeeZee&family=Hind+Siliguri:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="index.html">
+      <img src="https://tilab.bzh/files/Utilo_2023_10_24_Logo_Coul_20251217154511_20251217160540.png" alt="Logo Utilo" class="logo">
+      <span class="brand-name">Utilo <span>· fiches de facilitation</span></span>
+    </a>
+    <a class="header-link" href="https://tilab.bzh/?Utilo" target="_blank" rel="noopener">Le réseau Utilo ↗</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <h1><span class="hl">Fiches de facilitation Utilo</span></h1>
+    <p class="lead">55 outils d'intelligence collective pour animer vos réunions, ateliers et projets participatifs. Reprise du guide de facilitation produit par le réseau <a href="https://tilab.bzh/?Utilo" target="_blank" rel="noopener">Utilo / Ti Lab</a>.</p>
+    <div class="stats">
+      <span><b>55</b>fiches</span>
+      <span><b>14</b>thèmes</span>
+      <span><b>3</b>niveaux</span>
+    </div>
+  </div>
+</section>
+
+<main class="wrap">
+  <section class="filters" id="filters">
+    <div class="filter-group">
+      <label for="f-theme">Thème</label>
+      <select id="f-theme"><option value="">Tous les thèmes</option></select>
+    </div>
+    <div class="filter-group">
+      <label for="f-action">Action</label>
+      <select id="f-action"><option value="">Toutes les actions</option></select>
+    </div>
+    <div class="filter-group">
+      <label for="f-niveau">Niveau</label>
+      <select id="f-niveau">
+        <option value="">Tous les niveaux</option>
+        <option value="1">Niveau 1 · Débutant</option>
+        <option value="2">Niveau 2 · Intermédiaire</option>
+        <option value="3">Niveau 3 · Confirmé</option>
+      </select>
+    </div>
+    <div class="filter-group">
+      <label for="f-participants">Participants</label>
+      <select id="f-participants">
+        <option value="">Peu importe</option>
+        <option value="1-8">1 à 8</option>
+        <option value="9-15">9 à 15</option>
+        <option value="16-30">16 à 30</option>
+        <option value="31-100">30 et +</option>
+      </select>
+    </div>
+    <div class="filter-group grow">
+      <label for="f-recherche">Recherche</label>
+      <input type="search" id="f-recherche" placeholder="Rechercher une fiche…" autocomplete="off">
+    </div>
+    <button id="f-reset" class="reset" type="button">Réinitialiser</button>
+  </section>
+
+  <p class="count" id="count"></p>
+  <section class="grid" id="grid"></section>
+  <p class="empty" id="empty" hidden>Aucune fiche ne correspond à ces critères. 😕</p>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <p><img src="https://tilab.bzh/files/Utilo_2023_10_24_Logo_Coul_20251217154511_20251217160540.png" alt="" class="footer-logo"> Fiches issues du <a href="https://tilab.bzh/?Utilo" target="_blank" rel="noopener">guide de facilitation Utilo</a>, produit par le réseau du <a href="https://tilab.bzh" target="_blank" rel="noopener">Ti Lab</a> (2021). Site miroir statique, sans tracking, hébergé sur GitHub Pages.</p>
+  </div>
+</footer>
+
+<script src="themes.js"></script>
+<script src="fiches.js"></script>
+<script src="app.js"></script>
+<script src="assistant.js"></script>
+</body>
+</html>
